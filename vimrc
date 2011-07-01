@@ -1,0 +1,77 @@
+" Disable VI compatibility
+set nocompatible
+
+" 16 color terminal
+set t_Co=16
+
+" Set the term title
+set title
+
+" Show line number and position
+set number
+set ruler
+
+" Leave 3 line buffer
+set scrolloff=3
+
+" Enable syntax stuff
+syntax on
+filetype plugin indent on
+
+" Show current mode
+set showmode
+
+" Fix backspace
+set backspace=2
+
+" Make Ctrl-T go to the next vim-tab
+nmap <C-T> <ESC>:tabn<CR>
+
+" Fix expansion mode
+set wildmode=list:longest
+
+" Incremental search
+set incsearch
+set ignorecase
+
+" Show matching braces, etc.
+set showmatch
+
+" Make it smart
+set smartindent
+set smarttab
+set smartcase
+set autoindent
+
+" Default to soft tab
+set expandtab
+
+" Default to 2 spaces per tab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+
+" Make Taglist update more often
+set updatetime=750
+
+" Set ctags
+let Tlist_Ctags_Cmd='/opt/local/bin/ctags'
+
+" Enable file backup (atomic)
+set directory=~/.vim/swap,/tmp,.
+set backupdir=~/.vim/backup,/tmp,.
+set backup
+set writebackup
+
+" Tlist configs
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Exit_OnlyWindow = 1
+
+" Scroll the view faster
+noremap <C-e> 3<C-e>
+noremap <C-y> 3<C-y>
+
+" Disable auto-fold in Erlang
+let g:erlangFoldSplitFunction = 0
+

@@ -1,0 +1,5 @@
+[core]
+	editor = vim 
+[user]
+	name = Armon Dadgar
+	email = armon.dadgar@gmail.com
