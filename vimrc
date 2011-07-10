@@ -75,3 +75,6 @@ noremap <C-y> 3<C-y>
 " Disable auto-fold in Erlang
 let g:erlangFoldSplitFunction = 0
 
+" Wildcard ignore some files
+set wildignore+=*.o,*.pyc,*.beam,*.class,*~
+
