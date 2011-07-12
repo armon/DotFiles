@@ -3,3 +3,5 @@
 [user]
 	name = Armon Dadgar
 	email = armon.dadgar@gmail.com
+[alias]
+  prettylog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
