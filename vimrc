@@ -47,9 +47,9 @@ set autoindent
 set expandtab
 
 " Default to 2 spaces per tab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 
 " Make Taglist update more often
@@ -77,4 +77,10 @@ let g:erlangFoldSplitFunction = 0
 
 " Wildcard ignore some files
 set wildignore+=*.o,*.pyc,*.beam,*.class,*~
+
+" Make our shell interactive
+set shellcmdflag=-ic
+
+" Clear whitespace at the end
+autocmd BufWritePre *.py :%s/\s\+$//e
 
