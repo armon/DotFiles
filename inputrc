@@ -1,0 +1,5 @@
+# Show tab completion on first tab
+set show-all-if-ambiguous on
+
+# Case insensitive tab-completion
+set completion-ignore-case on
