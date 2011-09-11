@@ -1,6 +1,8 @@
 [core]
     editor = vim 
     excludesfile = /Users/adadgar/.gitignore
+[color]
+    ui = true
 [user]
 	name = Armon Dadgar
 	email = armon.dadgar@gmail.com
