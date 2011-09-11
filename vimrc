@@ -84,3 +84,11 @@ set shellcmdflag=-ic
 " Clear whitespace at the end
 autocmd BufWritePre *.py :%s/\s\+$//e
 
+" Disable folding
+set nofoldenable
+
+" Disable soft tabbing for HTML/CSS/JS
+au BufNewFile,BufRead *.html setl noexpandtab
+au BufNewFile,BufRead *.css setl noexpandtab
+au BufNewFile,BufRead *.js setl noexpandtab
+
