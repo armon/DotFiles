@@ -101,3 +101,9 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
 
+" Causes split to make it below
+set splitbelow
+
+" Causes vsplit to split to the right
+set splitright
+
