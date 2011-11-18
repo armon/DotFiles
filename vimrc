@@ -92,3 +92,12 @@ au BufNewFile,BufRead *.html setl noexpandtab
 au BufNewFile,BufRead *.css setl noexpandtab
 au BufNewFile,BufRead *.js setl noexpandtab
 
+" Detect the markdown type
+au BufNewFile,BufRead *.md,*.markdown,*.mdown setl filetype=markdown
+
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+" Sudo to write
+cmap w!! w !sudo tee % >/dev/null
+
