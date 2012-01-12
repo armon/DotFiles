@@ -20,6 +20,7 @@ filetype plugin indent on
 
 " Show current mode
 set showmode
+set laststatus=2
 
 " Fix backspace
 set backspace=2
@@ -51,6 +52,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+" More history
+set history=100
 
 " Make Taglist update more often
 set updatetime=750
@@ -106,4 +109,29 @@ set splitbelow
 
 " Causes vsplit to split to the right
 set splitright
+
+" Setup a leader
+let mapleader = ";"
+
+" Fast saving
+nmap <leader>w :w<cr>
+
+" Splitting
+nmap <leader>v :vsplit<cr>
+nmap <leader>s :split<cr>
+
+" Tabs
+nmap <leader>t :tabe<cr>
+nmap <leader>h :tabp<cr>
+nmap <leader>l :tabn<cr>
+
+" Fullscreen
+nmap <leader>f :set fu<cr>
+
+" Disable Ex Mode
+map Q <Nop>
+
+" Enable Pathogen
+let g:Powerline_symbols = "unicode"
+call pathogen#infect()
 

@@ -6,3 +6,4 @@ map <C-Z> :mksession! ~/.vim/.session <CR>
 map <C-X> :source ~/.vim/.session <CR>
 colorscheme molokai
 set fuopt+=maxhorz 
+set guioptions=egmLt
