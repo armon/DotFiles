@@ -7,7 +7,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
-Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'armon/syntastic'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'jimenezrick/vimerl'
@@ -18,6 +17,7 @@ Bundle 'pep8'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'python.vim'
 Bundle 'indent/python.vim'
+Bundle 'kien/ctrlp.vim'
 filetype plugin indent on
 
 " 16 color terminal
@@ -152,6 +152,12 @@ let g:erlangFoldSplitFunction = 0
 " Set powerline to use fancy symbols
 let g:Powerline_symbols = "fancy"
 let g:Powerline_theme = "armon"
+
+" Do not modify my path, bitch
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp'
 
 " Set the Gvim options
 if has("gui_running")
