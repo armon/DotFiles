@@ -1,0 +1,1 @@
+/shared/adadgar/.vim

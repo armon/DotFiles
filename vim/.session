@@ -1,0 +1,842 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:cpo_save=&cpo
+set cpo&vim
+imap <D-BS> 
+imap <M-BS> 
+imap <M-Down> }
+inoremap <D-Down> <C-End>
+imap <M-Up> {
+inoremap <D-Up> <C-Home>
+noremap! <M-Right> <C-Right>
+noremap! <D-Right> <End>
+noremap! <M-Left> <C-Left>
+noremap! <D-Left> <Home>
+noremap  3
+nmap  :tabn
+map  :source ~/.vim/.session 
+noremap  3
+map  :mksession! ~/.vim/.session 
+nnoremap <silent> ;b :CommandTBuffer
+nnoremap <silent> ;t :CommandT
+nmap ;f :set fu
+nmap ;s :split
+nmap ;v :vsplit
+nmap ;w :w
+map Q <Nop>
+vmap [% [%m'gv``
+vmap ]% ]%m'gv``
+vmap a% [%v]%
+nmap gx <Plug>NetrwBrowseX
+map <M-Down> }
+noremap <D-Down> <C-End>
+map <M-Up> {
+noremap <D-Up> <C-Home>
+noremap <M-Right> <C-Right>
+noremap <D-Right> <End>
+noremap <M-Left> <C-Left>
+noremap <D-Left> <Home>
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
+vmap <BS> "-d
+cmap w!! w !sudo tee % >/dev/null
+let &cpo=s:cpo_save
+unlet s:cpo_save
+set autoindent
+set background=dark
+set backspace=2
+set backup
+set backupdir=~/.vim/backup,/tmp,.
+set directory=~/.vim/swap,/tmp,.
+set expandtab
+set fileencodings=ucs-bom,utf-8,default,latin1
+set guifont=Monaco:h14
+set guioptions=egmt
+set guitablabel=%M%t
+set helplang=en
+set history=100
+set ignorecase
+set incsearch
+set langmenu=none
+set laststatus=2
+set mouse=a
+set printexpr=system('open\ -a\ Preview\ '.v:fname_in)\ +\ v:shell_error
+set ruler
+set runtimepath=~/.vim,~/.vim/bundle/command-t,~/.vim/bundle/vim-fugitive,~/.vim/bundle/vim-powerline,~/Applications/MacVim.app/Contents/Resources/vim/vimfiles,~/Applications/MacVim.app/Contents/Resources/vim/runtime,~/Applications/MacVim.app/Contents/Resources/vim/vimfiles/after,~/.vim/after
+set scrolloff=3
+set sessionoptions=blank,buffers,curdir,folds,localoptions,options,resize,tabpages,winpos,winsize
+set shellcmdflag=-ic
+set shiftwidth=4
+set showmatch
+set smartcase
+set smartindent
+set smarttab
+set softtabstop=4
+set splitbelow
+set splitright
+set tabstop=4
+set termencoding=utf-8
+set title
+set updatetime=750
+set wildignore=*.o,*.pyc,*.beam,*.class,*~
+set wildmode=list:longest
+set window=54
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/projects/kiip
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +15 tests/integration/lib/mongostore/test_store.py
+badd +76 lib/mongostore/store.py
+badd +24 tests/unit/lib/mongo/model_test.py
+badd +1 tests/unit/lib/mongo/__init__.py
+badd +1 tests/support/__init__.py
+badd +86 lib/mongo/connection.py
+badd +0 lib/mongostore/query.py
+badd +353 tests/integration/lib/mongostore/test_query.py
+badd +0 tests/unit/lib/mongo/query_test.py
+badd +132 ~/.vimrc
+badd +4 ~/.gvimrc
+badd +0 lib/model/query_filters.py
+badd +0 lib/model/field.py
+silent! argdel *
+set lines=55 columns=239
+set fullscreen
+winpos 3 5
+edit lib/model/field.py
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd t
+set winheight=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 119 + 119) / 239)
+exe 'vert 2resize ' . ((&columns * 119 + 119) / 239)
+argglobal
+noremap <buffer> <silent>  :PyflakesUpdate
+noremap <buffer> <silent> dw dw:PyflakesUpdate
+noremap <buffer> <silent> dd dd:PyflakesUpdate
+noremap <buffer> <silent> u u:PyflakesUpdate
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal foldcolumn=0
+set nofoldenable
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=s*\\(from\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetPythonIndent(v:lnum)
+setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except,0#
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal nomacmeta
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=pythoncomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#Statusline({'r':\ '%(%(%#Ple7ffffffa0d70000b#\ %{Powerline#Functions#GetMode()}\ %)%#Pla0d70000f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'n':\ '%(%(%#Pl16005f0094afd700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pl94afd700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'v':\ '%(%(%#Pl58870000d0ff8700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pld0ff8700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'i':\ '%(%(%#Pl17005f5fe7ffffffb#\ %{Powerline#Functions#GetMode()}\ %)%#Ple7ffffff1f0087afb#‚ÆÄ%)%(%(%#Pl7587d7ff1f0087afN#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pl7587d7ff1f0087afN#‚ÆÅ%)%(\ %(%#Plc4ff00001f0087afb#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7ffffff1f0087afb#%t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Plc4ff00001f0087afb#%H%W\ %)%#Pl1f0087af18005f87b#‚ÆÄ%)%<%#Pl00ff000018005f87N#%=%(%#Pl18005f8718005f87N#‚ÆÇ%(%#Pl7587d7ff18005f87N#\ %{&fileformat}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Pl1f0087af18005f87N#‚ÆÇ%(%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%)%(%#Pl7587d7ff1f0087afb#‚ÆÇ%(%#Pl17005f5f7587d7ffb#\ ‚≠°\ %3l%)%(%#Pl17005f5f7587d7ffN#\ ‚ïë\ %-2c%)\ %)',\ 'N':\ '%(%(%#Plef4e4e4eeb262626N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pleb262626eb262626N#‚ÆÄ%)%(\ %(%#Pl58870000eb262626N#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Plf58a8a8aeb262626b#%t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Pl58870000eb262626N#%H%W\ %)%#Pleb262626e9121212b#‚ÆÄ%)%<%#Pl00ff0000e9121212N#%=%(%#Pleb262626e9121212N#‚ÆÇ%(%#Plef4e4e4eeb262626N#\ %3p%%\ %)%)%(%#Plf58a8a8aeb262626b#‚ÆÉ%(%#Plf58a8a8aeb262626b#\ ‚≠°\ %3l%)%(%#Plf1626262eb262626N#\ ‚ïë\ %-2c%)\ %)'},1)
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=4
+setlocal tags=~/projects/kiip/.git/python.tags,~/projects/kiip/.git/tags,./tags,tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 26) / 53)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+wincmd w
+argglobal
+edit lib/mongostore/query.py
+noremap <buffer> <silent>  :PyflakesUpdate
+noremap <buffer> <silent> dw dw:PyflakesUpdate
+noremap <buffer> <silent> dd dd:PyflakesUpdate
+noremap <buffer> <silent> u u:PyflakesUpdate
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal foldcolumn=0
+set nofoldenable
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=s*\\(from\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetPythonIndent(v:lnum)
+setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except,0#
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal nomacmeta
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=pythoncomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#Statusline({'r':\ '%(%(%#Ple7ffffffa0d70000b#\ %{Powerline#Functions#GetMode()}\ %)%#Pla0d70000f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'n':\ '%(%(%#Pl16005f0094afd700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pl94afd700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'v':\ '%(%(%#Pl58870000d0ff8700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pld0ff8700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'i':\ '%(%(%#Pl17005f5fe7ffffffb#\ %{Powerline#Functions#GetMode()}\ %)%#Ple7ffffff1f0087afb#‚ÆÄ%)%(%(%#Pl7587d7ff1f0087afN#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pl7587d7ff1f0087afN#‚ÆÅ%)%(\ %(%#Plc4ff00001f0087afb#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7ffffff1f0087afb#%t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Plc4ff00001f0087afb#%H%W\ %)%#Pl1f0087af18005f87b#‚ÆÄ%)%<%#Pl00ff000018005f87N#%=%(%#Pl18005f8718005f87N#‚ÆÇ%(%#Pl7587d7ff18005f87N#\ %{&fileformat}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Pl1f0087af18005f87N#‚ÆÇ%(%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%)%(%#Pl7587d7ff1f0087afb#‚ÆÇ%(%#Pl17005f5f7587d7ffb#\ ‚≠°\ %3l%)%(%#Pl17005f5f7587d7ffN#\ ‚ïë\ %-2c%)\ %)',\ 'N':\ '%(%(%#Plef4e4e4eeb262626N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pleb262626eb262626N#‚ÆÄ%)%(\ %(%#Pl58870000eb262626N#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Plf58a8a8aeb262626b#%t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Pl58870000eb262626N#%H%W\ %)%#Pleb262626e9121212b#‚ÆÄ%)%<%#Pl00ff0000e9121212N#%=%(%#Pleb262626e9121212N#‚ÆÇ%(%#Plef4e4e4eeb262626N#\ %3p%%\ %)%)%(%#Plf58a8a8aeb262626b#‚ÆÉ%(%#Plf58a8a8aeb262626b#\ ‚≠°\ %3l%)%(%#Plf1626262eb262626N#\ ‚ïë\ %-2c%)\ %)'},0)
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=4
+setlocal tags=~/projects/kiip/.git/python.tags,~/projects/kiip/.git/tags,./tags,tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 360 - ((20 * winheight(0) + 26) / 53)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+360
+normal! 04l
+wincmd w
+exe 'vert 1resize ' . ((&columns * 119 + 119) / 239)
+exe 'vert 2resize ' . ((&columns * 119 + 119) / 239)
+tabedit lib/model/query_filters.py
+set splitbelow splitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+noremap <buffer> <silent>  :PyflakesUpdate
+noremap <buffer> <silent> dw dw:PyflakesUpdate
+noremap <buffer> <silent> dd dd:PyflakesUpdate
+noremap <buffer> <silent> u u:PyflakesUpdate
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal foldcolumn=0
+set nofoldenable
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=s*\\(from\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetPythonIndent(v:lnum)
+setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except,0#
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal nomacmeta
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=pythoncomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#Statusline({'r':\ '%(%(%#Ple7ffffffa0d70000b#\ %{Powerline#Functions#GetMode()}\ %)%#Pla0d70000f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'n':\ '%(%(%#Pl16005f0094afd700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pl94afd700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'v':\ '%(%(%#Pl58870000d0ff8700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pld0ff8700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'i':\ '%(%(%#Pl17005f5fe7ffffffb#\ %{Powerline#Functions#GetMode()}\ %)%#Ple7ffffff1f0087afb#‚ÆÄ%)%(%(%#Pl7587d7ff1f0087afN#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pl7587d7ff1f0087afN#‚ÆÅ%)%(\ %(%#Plc4ff00001f0087afb#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7ffffff1f0087afb#%t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Plc4ff00001f0087afb#%H%W\ %)%#Pl1f0087af18005f87b#‚ÆÄ%)%<%#Pl00ff000018005f87N#%=%(%#Pl18005f8718005f87N#‚ÆÇ%(%#Pl7587d7ff18005f87N#\ %{&fileformat}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Pl1f0087af18005f87N#‚ÆÇ%(%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%)%(%#Pl7587d7ff1f0087afb#‚ÆÇ%(%#Pl17005f5f7587d7ffb#\ ‚≠°\ %3l%)%(%#Pl17005f5f7587d7ffN#\ ‚ïë\ %-2c%)\ %)',\ 'N':\ '%(%(%#Plef4e4e4eeb262626N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pleb262626eb262626N#‚ÆÄ%)%(\ %(%#Pl58870000eb262626N#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Plf58a8a8aeb262626b#%t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Pl58870000eb262626N#%H%W\ %)%#Pleb262626e9121212b#‚ÆÄ%)%<%#Pl00ff0000e9121212N#%=%(%#Pleb262626e9121212N#‚ÆÇ%(%#Plef4e4e4eeb262626N#\ %3p%%\ %)%)%(%#Plf58a8a8aeb262626b#‚ÆÉ%(%#Plf58a8a8aeb262626b#\ ‚≠°\ %3l%)%(%#Plf1626262eb262626N#\ ‚ïë\ %-2c%)\ %)'},0)
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=4
+setlocal tags=~/projects/kiip/.git/python.tags,~/projects/kiip/.git/tags,./tags,tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 33 - ((18 * winheight(0) + 26) / 53)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+33
+normal! 022l
+tabedit lib/mongostore/store.py
+set splitbelow splitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+noremap <buffer> <silent>  :PyflakesUpdate
+noremap <buffer> <silent> dw dw:PyflakesUpdate
+noremap <buffer> <silent> dd dd:PyflakesUpdate
+noremap <buffer> <silent> u u:PyflakesUpdate
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal foldcolumn=0
+set nofoldenable
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=s*\\(from\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetPythonIndent(v:lnum)
+setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except,0#
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal nomacmeta
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=pythoncomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#Statusline({'r':\ '%(%(%#Ple7ffffffa0d70000b#\ %{Powerline#Functions#GetMode()}\ %)%#Pla0d70000f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'n':\ '%(%(%#Pl16005f0094afd700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pl94afd700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'v':\ '%(%(%#Pl58870000d0ff8700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pld0ff8700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'i':\ '%(%(%#Pl17005f5fe7ffffffb#\ %{Powerline#Functions#GetMode()}\ %)%#Ple7ffffff1f0087afb#‚ÆÄ%)%(%(%#Pl7587d7ff1f0087afN#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pl7587d7ff1f0087afN#‚ÆÅ%)%(\ %(%#Plc4ff00001f0087afb#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7ffffff1f0087afb#%t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Plc4ff00001f0087afb#%H%W\ %)%#Pl1f0087af18005f87b#‚ÆÄ%)%<%#Pl00ff000018005f87N#%=%(%#Pl18005f8718005f87N#‚ÆÇ%(%#Pl7587d7ff18005f87N#\ %{&fileformat}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Pl1f0087af18005f87N#‚ÆÇ%(%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%)%(%#Pl7587d7ff1f0087afb#‚ÆÇ%(%#Pl17005f5f7587d7ffb#\ ‚≠°\ %3l%)%(%#Pl17005f5f7587d7ffN#\ ‚ïë\ %-2c%)\ %)',\ 'N':\ '%(%(%#Plef4e4e4eeb262626N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pleb262626eb262626N#‚ÆÄ%)%(\ %(%#Pl58870000eb262626N#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Plf58a8a8aeb262626b#%t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Pl58870000eb262626N#%H%W\ %)%#Pleb262626e9121212b#‚ÆÄ%)%<%#Pl00ff0000e9121212N#%=%(%#Pleb262626e9121212N#‚ÆÇ%(%#Plef4e4e4eeb262626N#\ %3p%%\ %)%)%(%#Plf58a8a8aeb262626b#‚ÆÉ%(%#Plf58a8a8aeb262626b#\ ‚≠°\ %3l%)%(%#Plf1626262eb262626N#\ ‚ïë\ %-2c%)\ %)'},0)
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=4
+setlocal tags=~/projects/kiip/.git/python.tags,~/projects/kiip/.git/tags,./tags,tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 32 - ((31 * winheight(0) + 26) / 53)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+32
+normal! 031l
+tabedit tests/unit/lib/mongo/query_test.py
+set splitbelow splitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+noremap <buffer> <silent>  :PyflakesUpdate
+noremap <buffer> <silent> dw dw:PyflakesUpdate
+noremap <buffer> <silent> dd dd:PyflakesUpdate
+noremap <buffer> <silent> u u:PyflakesUpdate
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal foldcolumn=0
+set nofoldenable
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=s*\\(from\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetPythonIndent(v:lnum)
+setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except,0#
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal nomacmeta
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=pythoncomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#Statusline({'r':\ '%(%(%#Ple7ffffffa0d70000b#\ %{Powerline#Functions#GetMode()}\ %)%#Pla0d70000f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'n':\ '%(%(%#Pl16005f0094afd700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pl94afd700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'v':\ '%(%(%#Pl58870000d0ff8700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pld0ff8700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'i':\ '%(%(%#Pl17005f5fe7ffffffb#\ %{Powerline#Functions#GetMode()}\ %)%#Ple7ffffff1f0087afb#‚ÆÄ%)%(%(%#Pl7587d7ff1f0087afN#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pl7587d7ff1f0087afN#‚ÆÅ%)%(\ %(%#Plc4ff00001f0087afb#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7ffffff1f0087afb#%t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Plc4ff00001f0087afb#%H%W\ %)%#Pl1f0087af18005f87b#‚ÆÄ%)%<%#Pl00ff000018005f87N#%=%(%#Pl18005f8718005f87N#‚ÆÇ%(%#Pl7587d7ff18005f87N#\ %{&fileformat}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Pl1f0087af18005f87N#‚ÆÇ%(%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%)%(%#Pl7587d7ff1f0087afb#‚ÆÇ%(%#Pl17005f5f7587d7ffb#\ ‚≠°\ %3l%)%(%#Pl17005f5f7587d7ffN#\ ‚ïë\ %-2c%)\ %)',\ 'N':\ '%(%(%#Plef4e4e4eeb262626N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pleb262626eb262626N#‚ÆÄ%)%(\ %(%#Pl58870000eb262626N#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Plf58a8a8aeb262626b#%t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Pl58870000eb262626N#%H%W\ %)%#Pleb262626e9121212b#‚ÆÄ%)%<%#Pl00ff0000e9121212N#%=%(%#Pleb262626e9121212N#‚ÆÇ%(%#Plef4e4e4eeb262626N#\ %3p%%\ %)%)%(%#Plf58a8a8aeb262626b#‚ÆÉ%(%#Plf58a8a8aeb262626b#\ ‚≠°\ %3l%)%(%#Plf1626262eb262626N#\ ‚ïë\ %-2c%)\ %)'},0)
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=4
+setlocal tags=~/projects/kiip/.git/python.tags,~/projects/kiip/.git/tags,./tags,tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 91 - ((49 * winheight(0) + 26) / 53)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+91
+normal! 0
+tabedit lib/mongostore/query.py
+set splitbelow splitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+noremap <buffer> <silent>  :PyflakesUpdate
+noremap <buffer> <silent> dw dw:PyflakesUpdate
+noremap <buffer> <silent> dd dd:PyflakesUpdate
+noremap <buffer> <silent> u u:PyflakesUpdate
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal foldcolumn=0
+set nofoldenable
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=s*\\(from\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetPythonIndent(v:lnum)
+setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except,0#
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal nomacmeta
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=pythoncomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#Statusline({'r':\ '%(%(%#Ple7ffffffa0d70000b#\ %{Powerline#Functions#GetMode()}\ %)%#Pla0d70000f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'n':\ '%(%(%#Pl16005f0094afd700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pl94afd700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'v':\ '%(%(%#Pl58870000d0ff8700b#\ %{Powerline#Functions#GetMode()}\ %)%#Pld0ff8700f0585858b#‚ÆÄ%)%(%(%#Plfabcbcbcf0585858N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Plfabcbcbcf0585858N#‚ÆÅ%)%(\ %(%#Plc4ff0000f0585858b#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7fffffff0585858b#%t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plc4ff0000f0585858b#%H%W\ %)%#Plf0585858ec303030b#‚ÆÄ%)%<%#Pl00ff0000ec303030N#%=%(%#Plec303030ec303030N#‚ÆÇ%(%#Plf79e9e9eec303030N#\ %{&fileformat}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Plf79e9e9eec303030N#‚ÆÉ%(%#Plf79e9e9eec303030N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Plf0585858ec303030N#‚ÆÇ%(%#Plfabcbcbcf0585858N#\ %3p%%\ %)%)%(%#Plfcd0d0d0f0585858b#‚ÆÇ%(%#Plec303030fcd0d0d0b#\ ‚≠°\ %3l%)%(%#Plf4808080fcd0d0d0N#\ ‚ïë\ %-2c%)\ %)',\ 'i':\ '%(%(%#Pl17005f5fe7ffffffb#\ %{Powerline#Functions#GetMode()}\ %)%#Ple7ffffff1f0087afb#‚ÆÄ%)%(%(%#Pl7587d7ff1f0087afN#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pl7587d7ff1f0087afN#‚ÆÅ%)%(\ %(%#Plc4ff00001f0087afb#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Ple7ffffff1f0087afb#%t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Plc4ff00001f0087afb#%H%W\ %)%#Pl1f0087af18005f87b#‚ÆÄ%)%<%#Pl00ff000018005f87N#%=%(%#Pl18005f8718005f87N#‚ÆÇ%(%#Pl7587d7ff18005f87N#\ %{&fileformat}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{(&fenc\ ==\ \"\"\ ?\ &enc\ :\ &fenc)}\ %)%)%(%#Pl7587d7ff18005f87N#‚ÆÉ%(%#Pl7587d7ff18005f87N#\ %{strlen(&ft)\ ?\ &ft\ :\ \"no\ ft\"}\ %)%)%(%#Pl1f0087af18005f87N#‚ÆÇ%(%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%)%(%#Pl7587d7ff1f0087afb#‚ÆÇ%(%#Pl17005f5f7587d7ffb#\ ‚≠°\ %3l%)%(%#Pl17005f5f7587d7ffN#\ ‚ïë\ %-2c%)\ %)',\ 'N':\ '%(%(%#Plef4e4e4eeb262626N#\ %{Powerline#Functions#fugitive#GetBranch(\"‚≠†\")}\ %)%#Pleb262626eb262626N#‚ÆÄ%)%(\ %(%#Pl58870000eb262626N#%{&readonly\ ?\ \"‚≠§\"\ :\ \"\"}\ %)%(%#Plf58a8a8aeb262626b#%t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Pl58870000eb262626N#%H%W\ %)%#Pleb262626e9121212b#‚ÆÄ%)%<%#Pl00ff0000e9121212N#%=%(%#Pleb262626e9121212N#‚ÆÇ%(%#Plef4e4e4eeb262626N#\ %3p%%\ %)%)%(%#Plf58a8a8aeb262626b#‚ÆÉ%(%#Plf58a8a8aeb262626b#\ ‚≠°\ %3l%)%(%#Plf1626262eb262626N#\ ‚ïë\ %-2c%)\ %)'},0)
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=4
+setlocal tags=~/projects/kiip/.git/python.tags,~/projects/kiip/.git/tags,./tags,tags
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 34 - ((33 * winheight(0) + 26) / 53)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+34
+normal! 0
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
