@@ -25,6 +25,7 @@ set t_Co=16
 
 " Set the term title
 set title
+set titlestring=%F
 
 " Show line number and position
 set number
