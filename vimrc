@@ -1,6 +1,25 @@
 " Disable VI compatibility
 set nocompatible
 
+" Setup Vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'armon/syntastic'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jimenezrick/vimerl'
+Bundle 'mileszs/ack.vim'
+Bundle 'matchit.zip'
+Bundle 'taglist.vim'
+Bundle 'pep8'
+Bundle 'kevinw/pyflakes-vim'
+Bundle 'python.vim'
+Bundle 'indent/python.vim'
+filetype plugin indent on
+
 " 16 color terminal
 set t_Co=16
 
@@ -58,25 +77,15 @@ set history=100
 " Make Taglist update more often
 set updatetime=750
 
-" Set ctags
-let Tlist_Ctags_Cmd='/opt/local/bin/ctags'
-
 " Enable file backup (atomic)
 set directory=~/.vim/swap,/tmp,.
 set backupdir=~/.vim/backup,/tmp,.
 set backup
 set writebackup
 
-" Tlist configs
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Exit_OnlyWindow = 1
-
 " Scroll the view faster
 noremap <C-e> 3<C-e>
 noremap <C-y> 3<C-y>
-
-" Disable auto-fold in Erlang
-let g:erlangFoldSplitFunction = 0
 
 " Wildcard ignore some files
 set wildignore+=*.o,*.pyc,*.beam,*.class,*~
@@ -120,18 +129,39 @@ nmap <leader>w :w<cr>
 nmap <leader>v :vsplit<cr>
 nmap <leader>s :split<cr>
 
-" Tabs
-nmap <leader>t :tabe<cr>
-nmap <leader>h :tabp<cr>
-nmap <leader>l :tabn<cr>
-
 " Fullscreen
 nmap <leader>f :set fu<cr>
 
 " Disable Ex Mode
 map Q <Nop>
 
-" Enable Pathogen
-let g:Powerline_symbols = "unicode"
-call pathogen#infect()
+" Allows %% to expand to the folder of the current file
+cnoremap %% <C-R>=expand('%:h').'/'<CR>
+
+" Set ctags
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+
+" Tlist configs
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Exit_OnlyWindow = 1
+
+" Disable auto-fold in Erlang
+let g:erlangFoldSplitFunction = 0
+
+" Set powerline to use fancy symbols
+let g:Powerline_symbols = "fancy"
+let g:Powerline_theme = "armon"
+
+" Set the Gvim options
+if has("gui_running")
+    set guifont=Monaco:h14
+    set columns=140
+    set lines=40
+    set sessionoptions=blank,buffers,curdir,folds,localoptions,options,resize,tabpages,winpos,winsize
+    map <C-Z> :mksession! ~/.vim/.session <CR>
+    map <C-X> :source ~/.vim/.session <CR>
+    colorscheme molokai
+    set fuopt+=maxhorz 
+    set guioptions=egmt
+endif
 
