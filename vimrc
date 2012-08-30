@@ -14,10 +14,22 @@ Bundle 'mileszs/ack.vim'
 Bundle 'matchit.zip'
 Bundle 'taglist.vim'
 Bundle 'pep8'
-Bundle 'kevinw/pyflakes-vim'
+Bundle 'localvimrc'
 Bundle 'python.vim'
 Bundle 'indent/python.vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'sjl/gundo.vim'
+Bundle 'Rip-Rip/clang_complete'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'LargeFile'
+Bundle 'scrooloose/nerdcommenter'
+Bundle "godlygeek/tabular"
+Bundle 'tpope/vim-eunuch'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'jsbeautify'
+Bundle 'amadeus/powerline-improved'
+Bundle 'Lokaltog/vim-easymotion'
 filetype plugin indent on
 
 " 16 color terminal
@@ -75,6 +87,10 @@ set shiftwidth=4
 " More history
 set history=100
 
+" Store our undo file
+set undodir=~/.vim/undo
+set undofile
+
 " Make Taglist update more often
 set updatetime=750
 
@@ -94,8 +110,24 @@ set wildignore+=*.o,*.pyc,*.beam,*.class,*~
 " Make our shell interactive
 set shellcmdflag=-ic
 
-" Clear whitespace at the end
-autocmd BufWritePre *.py :%s/\s\+$//e
+" From http://vimcasts.org/episodes/tidying-whitespace/
+" Preserves/Saves the state, executes a command, and returns to the saved state
+" Modified from http://vimbits.com/bits/231
+" Remove trailing whitespace on save
+function! Preserve(command)
+    " Save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    execute a:command
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" Execute clear whitespace on save
+autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 
 " Disable folding
 set nofoldenable
@@ -120,6 +152,9 @@ set splitbelow
 " Causes vsplit to split to the right
 set splitright
 
+" Nicer invisibles
+set listchars=tab:›\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+
 " Setup a leader
 let mapleader = ";"
 
@@ -136,8 +171,15 @@ nmap <leader>f :set fu<cr>
 " Disable Ex Mode
 map Q <Nop>
 
+" Remap jj to escape
+inoremap jj <Esc>
+
 " Allows %% to expand to the folder of the current file
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
+
+" Configure syntastic
+let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['erlang', 'html'] }
+let g:syntastic_javascript_jsl_conf = "-conf ~/.jslintrc"
 
 " Set ctags
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
@@ -149,15 +191,50 @@ let Tlist_Exit_OnlyWindow = 1
 " Disable auto-fold in Erlang
 let g:erlangFoldSplitFunction = 0
 
-" Set powerline to use fancy symbols
+" Set powerline to use fancy symbols, and custom theme
 let g:Powerline_symbols = "fancy"
-let g:Powerline_theme = "armon"
+let g:Powerline_theme = "custom"
+let g:Powerline_colorscheme = "custom"
+" call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
 
-" Do not modify my path, bitch
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp'
+" Setup ctrlp
+let g:ctrlp_max_files = 10000
+nmap <leader>b :CtrlPBuffer<cr>
+nmap <leader>d :bdelete<cr>
+
+" Optimize file searching
+if has("unix")
+    let g:ctrlp_user_command = {
+                \   'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+                \ }
+endif
+let g:ctrlp_working_path_mode = 0 " Do not modify my path, bitch
+let g:ctrlp_map = '<leader>t' " Just use leader-t
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|env|deps' " Ignore version control
+let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp'  " Put the cache in the vim folder
+let g:ctrlp_jump_to_buffer = 1 " Do not jump to new tabs
+map <leader>b :CtrlPBuffer<cr>
+
+" Configure localvimrc
+let g:localvimrc_ask = 0
+let g:localvimrc_sandbox = 0
+
+" Disable fancy shit for 'large' files
+" that are > 50MB
+let g:LargeFile = 50
+
+" If we are in visual mode, we can use * to search for the selection
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " Set the Gvim options
 if has("gui_running")
@@ -168,7 +245,7 @@ if has("gui_running")
     map <C-Z> :mksession! ~/.vim/.session <CR>
     map <C-X> :source ~/.vim/.session <CR>
     colorscheme molokai
-    set fuopt+=maxhorz 
+    set fuopt+=maxhorz
     set guioptions=egmt
 endif
 

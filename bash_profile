@@ -19,4 +19,18 @@ alias gl='git prettylog'
 alias gd='git cdiff'
 alias gcp='git cherry-pick'
 alias gco='git checkout'
+export EDITOR=vim
+
+function sshkiip { cd ~/projects/kiip/kiipweb; ssh -i .chef/kiip-ssh.pem -p 5447 ubuntu@$1; }
+export -f sshkiip
+
+function cd {
+    if [ -f "$1" ]
+    then
+        $EDITOR "$1"
+    else
+        builtin cd $@
+    fi
+}
+export -f cd
 
