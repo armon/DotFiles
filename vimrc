@@ -110,6 +110,9 @@ set wildignore+=*.o,*.pyc,*.beam,*.class,*~
 " Make our shell interactive
 set shellcmdflag=-ic
 
+" Prompts to save on quit
+set confirm
+
 " From http://vimcasts.org/episodes/tidying-whitespace/
 " Preserves/Saves the state, executes a command, and returns to the saved state
 " Modified from http://vimbits.com/bits/231
@@ -203,14 +206,14 @@ nmap <leader>b :CtrlPBuffer<cr>
 nmap <leader>d :bdelete<cr>
 
 " Optimize file searching
+let g:ctrlp_custom_ignore = '\.git\|\.hg\|\.svn\|env\|.beam\|ebin\|deps\|\.eunit\|\.pyc' " Ignore version control
 if has("unix")
     let g:ctrlp_user_command = {
-                \   'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+                \   'fallback': 'find %s -type f | egrep -v ' . g:ctrlp_custom_ignore .' | head -' . g:ctrlp_max_files
                 \ }
 endif
 let g:ctrlp_working_path_mode = 0 " Do not modify my path, bitch
 let g:ctrlp_map = '<leader>t' " Just use leader-t
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|env|deps' " Ignore version control
 let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp'  " Put the cache in the vim folder
 let g:ctrlp_jump_to_buffer = 1 " Do not jump to new tabs
 map <leader>b :CtrlPBuffer<cr>
@@ -248,4 +251,5 @@ if has("gui_running")
     set fuopt+=maxhorz
     set guioptions=egmt
 endif
+
 
