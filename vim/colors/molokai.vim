@@ -3,7 +3,7 @@
 " Author: Tomas Restrepo <tomas@winterdom.com>
 "
 " Note: Based on the monokai theme for textmate
-" by Wimer Hazenberg and its darker variant 
+" by Wimer Hazenberg and its darker variant
 " by Hamish Stuart Macpherson
 "
 
@@ -91,7 +91,7 @@ hi Statement       guifg=#FF2775               gui=bold
 "hi StatusLine      guifg=#455354 guibg=fg
 "hi StatusLineNC    guifg=#808080 guibg=#080808
 hi StatusLine      guifg=#660F2F guibg=fg
-hi StatusLineNC    guifg=#000000 guibg=#444444 
+hi StatusLineNC    guifg=#000000 guibg=#444444
 
 hi StorageClass    guifg=#FD971F               gui=italic
 hi Structure       guifg=#66D9EF
@@ -124,6 +124,11 @@ else
    hi LineNr          guifg=#BCBCBC guibg=#232526
    hi NonText         guifg=#BCBCBC guibg=#232526
 end
+
+" Git gutter
+highlight lineAdded    guifg=#a6e22e guibg=#232526 ctermfg=2 ctermbg=NONE
+highlight lineModified guifg=#fd971f guibg=#232526 ctermfg=3 ctermbg=NONE
+highlight lineRemoved  guifg=#ff2775 guibg=#232526 ctermfg=1 ctermbg=NONE
 
 "
 " Support for 256-color terminal

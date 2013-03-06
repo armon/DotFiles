@@ -7,9 +7,9 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
-Bundle 'armon/syntastic'
+Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'jimenezrick/vimerl'
+Bundle 'armon/vimerl'
 Bundle 'mileszs/ack.vim'
 Bundle 'matchit.zip'
 Bundle 'taglist.vim'
@@ -19,21 +19,29 @@ Bundle 'python.vim'
 Bundle 'indent/python.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
-Bundle 'Rip-Rip/clang_complete'
+"Bundle 'Rip-Rip/clang_complete'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'LargeFile'
 Bundle 'scrooloose/nerdcommenter'
 Bundle "godlygeek/tabular"
 Bundle 'tpope/vim-eunuch'
-Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'jsbeautify'
 Bundle 'amadeus/powerline-improved'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-abolish'
+Bundle "tpope/vim-markdown"
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+Bundle 'airblade/vim-gitgutter'
+
+if has("gui_running")
+    Bundle 'Valloric/YouCompleteMe'
+endif
 filetype plugin indent on
 
 " 16 color terminal
-set t_Co=16
+set t_Co=256
 
 " Set the term title
 set title
@@ -110,6 +118,9 @@ set wildignore+=*.o,*.pyc,*.beam,*.class,*~
 " Make our shell interactive
 set shellcmdflag=-ic
 
+" Allow switching away from changed buffers
+set hidden
+
 " Prompts to save on quit
 set confirm
 
@@ -180,6 +191,12 @@ inoremap jj <Esc>
 " Allows %% to expand to the folder of the current file
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 
+" General cursor moves in insert mode
+inoremap <c-k> <esc>O
+inoremap <c-l> <esc>A
+inoremap <c-h> <esc>I
+inoremap <c-j> <esc>o
+
 " Configure syntastic
 let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['erlang', 'html'] }
 let g:syntastic_javascript_jsl_conf = "-conf ~/.jslintrc"
@@ -203,10 +220,15 @@ let g:Powerline_colorscheme = "custom"
 " Setup ctrlp
 let g:ctrlp_max_files = 10000
 nmap <leader>b :CtrlPBuffer<cr>
+nmap <leader>l :CtrlPLine<cr>
 nmap <leader>d :bdelete<cr>
 
+" Setup YCM
+let g:ycm_key_detailed_diagnostics = '<leader>i'
+let g:ycm_confirm_extra_conf = 0
+
 " Optimize file searching
-let g:ctrlp_custom_ignore = '\.git\|\.hg\|\.svn\|env\|.beam\|ebin\|deps\|\.eunit\|\.pyc' " Ignore version control
+let g:ctrlp_custom_ignore = '\.git\|\.hg\|\.svn\|env\|.beam\|ebin\|deps\|\.eunit\|\.pyc\|\.o$'
 if has("unix")
     let g:ctrlp_user_command = {
                 \   'fallback': 'find %s -type f | egrep -v ' . g:ctrlp_custom_ignore .' | head -' . g:ctrlp_max_files
@@ -238,6 +260,13 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+" Gist settings
+let g:gist_clip_command = 'pbcopy'
+let g:gist_open_browser_after_post = 1
+
+" Gitgutter
+let g:gitgutter_highlights = 0
 
 " Set the Gvim options
 if has("gui_running")
