@@ -4,6 +4,7 @@ set nocompatible
 " Setup Vundle
 filetype off
 set rtp+=~/.vim/bundle/vundle/
+set rtp+=$GOROOT/misc/vim
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
@@ -19,7 +20,7 @@ Bundle 'python.vim'
 Bundle 'indent/python.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
-"Bundle 'Rip-Rip/clang_complete'
+Bundle 'Rip-Rip/clang_complete'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'LargeFile'
@@ -35,9 +36,6 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'airblade/vim-gitgutter'
 
-if has("gui_running")
-    Bundle 'Valloric/YouCompleteMe'
-endif
 filetype plugin indent on
 
 " 16 color terminal
@@ -103,7 +101,8 @@ set undofile
 set updatetime=750
 
 " Enable file backup (atomic)
-set directory=~/.vim/swap,/tmp,.
+set noswapfile
+"set directory=~/.vim/swap,/tmp,.
 set backupdir=~/.vim/backup,/tmp,.
 set backup
 set writebackup
@@ -154,6 +153,9 @@ au BufNewFile,BufRead *.js setl noexpandtab
 " Detect the markdown type
 au BufNewFile,BufRead *.md,*.markdown,*.mdown setl filetype=markdown
 
+" Auto format go code
+autocmd BufWritePre *.go Fmt
+
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
@@ -197,9 +199,13 @@ inoremap <c-l> <esc>A
 inoremap <c-h> <esc>I
 inoremap <c-j> <esc>o
 
+" Use <leader> ss to re-run the syntax highlights
+nnoremap <leader>ss :syntax sync fromstart<cr>:redraw!<cr>
+
 " Configure syntastic
 let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['erlang', 'html'] }
 let g:syntastic_javascript_jsl_conf = "-conf ~/.jslintrc"
+let g:syntastic_always_populate_loc_list=1
 
 " Set ctags
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
@@ -226,9 +232,11 @@ nmap <leader>d :bdelete<cr>
 " Setup YCM
 let g:ycm_key_detailed_diagnostics = '<leader>i'
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_allow_changing_updatetime = 0
+let g:ycm_max_diagnostics_to_display = 30
 
 " Optimize file searching
-let g:ctrlp_custom_ignore = '\.git\|\.hg\|\.svn\|env\|.beam\|ebin\|deps\|\.eunit\|\.pyc\|\.o$'
+let g:ctrlp_custom_ignore = '\\.vagrant\|\\.git\|\\.hg\|\\.svn\|env\|.beam\|ebin\|deps\|\\.eunit\|\\.pyc$\|\\.o$'
 if has("unix")
     let g:ctrlp_user_command = {
                 \   'fallback': 'find %s -type f | egrep -v ' . g:ctrlp_custom_ignore .' | head -' . g:ctrlp_max_files
@@ -267,6 +275,7 @@ let g:gist_open_browser_after_post = 1
 
 " Gitgutter
 let g:gitgutter_highlights = 0
+let g:gitgutter_all_on_focusgained = 0
 
 " Set the Gvim options
 if has("gui_running")

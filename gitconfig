@@ -1,6 +1,6 @@
 [core]
     editor = vim 
-    excludesfile = /Users/adadgar/.gitignore
+	excludesfile = /Users/armon/.gitignore
 [color]
     ui = true
 [user]
@@ -12,3 +12,7 @@
   update = !gx-update
   publish = !gx-publish
 
+[push]
+	default = tracking
+[github]
+	user = armon
