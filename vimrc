@@ -32,9 +32,11 @@ Bundle 'amadeus/powerline-improved'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-abolish'
 Bundle "tpope/vim-markdown"
+Bundle "jtratner/vim-flavored-markdown"
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'airblade/vim-gitgutter'
+Bundle "pangloss/vim-javascript"
 
 filetype plugin indent on
 
@@ -151,7 +153,13 @@ au BufNewFile,BufRead *.css setl noexpandtab
 au BufNewFile,BufRead *.js setl noexpandtab
 
 " Detect the markdown type
-au BufNewFile,BufRead *.md,*.markdown,*.mdown setl filetype=markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+
+" Detect the salt type
+au BufNewFile,BufRead *.sls setl filetype=yaml
 
 " Auto format go code
 autocmd BufWritePre *.go Fmt
@@ -276,6 +284,11 @@ let g:gist_open_browser_after_post = 1
 " Gitgutter
 let g:gitgutter_highlights = 0
 let g:gitgutter_all_on_focusgained = 0
+nnoremap <silent> <leader>j :GitGutterNextHunk<cr>
+nnoremap <silent> <leader>k :GitGutterPrevHunk<cr>
+
+" Adding abbrev
+iabbrev ldiz ( ͠° ͟ʖ ͡°)
 
 " Set the Gvim options
 if has("gui_running")
