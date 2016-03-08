@@ -1,46 +1,35 @@
 " Disable VI compatibility
 set nocompatible
 
-" Setup Vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
+" Setup Plug
+call plug#begin('~/.vim/plugged')
+Plug 'bling/vim-airline'
+Plug 'scrooloose/syntastic'
+Plug 'armon/vimerl'
+Plug 'matchit.zip'
+Plug 'taglist.vim'
+Plug 'pep8'
+Plug 'localvimrc'
+Plug 'indent/python.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sjl/gundo.vim'
+Plug 'Rip-Rip/clang_complete'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'scrooloose/nerdcommenter'       " Easily (un)comment
+Plug 'godlygeek/tabular'              " Tabularize
+Plug 'tpope/vim-markdown'             " Parsing for Markdown
+Plug 'jtratner/vim-flavored-markdown' " Parse Github-style Markdown
+Plug 'mattn/webapi-vim'               " Used for Gist
+Plug 'mattn/gist-vim'                 " Upload Gist
+Plug 'airblade/vim-gitgutter'         " Git Diff in Gutter
+Plug 'fatih/vim-go'                   " Golang integration
+Plug 'fatih/vim-hclfmt'               " HCL formatting
+call plug#end()
+
+" Setup the vim extensions for Go
 set rtp+=$GOROOT/misc/vim
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'armon/vimerl'
-Bundle 'mileszs/ack.vim'
-Bundle 'matchit.zip'
-Bundle 'taglist.vim'
-Bundle 'pep8'
-Bundle 'localvimrc'
-Bundle 'python.vim'
-Bundle 'indent/python.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'LargeFile'
-Bundle 'scrooloose/nerdcommenter'
-Bundle "godlygeek/tabular"
-Bundle 'tpope/vim-eunuch'
-Bundle 'jsbeautify'
-Bundle 'amadeus/powerline-improved'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-abolish'
-Bundle "tpope/vim-markdown"
-Bundle "jtratner/vim-flavored-markdown"
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle "pangloss/vim-javascript"
 
-filetype plugin indent on
-
-" 16 color terminal
+" 256 color terminal
 set t_Co=256
 
 " Set the term title
@@ -70,6 +59,16 @@ nmap <C-T> <ESC>:tabn<CR>
 
 " Fix expansion mode
 set wildmode=list:longest
+set wildignore+=.git,.hg,.svn " Ignore version control repos
+set wildignore+=*.6           " Ignore Go compiled files
+set wildignore+=*.pyc         " Ignore Python compiled files
+set wildignore+=*.rbc         " Ignore Rubinius compiled files
+set wildignore+=*.swp         " Ignore vim backups
+set wildignore+=*.o           " Ignore C/C++ object files
+set wildignore+=*.beam        " Ignore Erlang beam
+set wildignore+=*.class       " Ignore Java class
+set wildignore+=node_modules  " Ignore npm install directory
+set wildignore+=*~            " Ignore backup files
 
 " Incremental search
 set incsearch
@@ -104,7 +103,7 @@ set updatetime=750
 
 " Enable file backup (atomic)
 set noswapfile
-"set directory=~/.vim/swap,/tmp,.
+set directory=~/.vim/swap,/tmp,.
 set backupdir=~/.vim/backup,/tmp,.
 set backup
 set writebackup
@@ -113,11 +112,8 @@ set writebackup
 noremap <C-e> 3<C-e>
 noremap <C-y> 3<C-y>
 
-" Wildcard ignore some files
-set wildignore+=*.o,*.pyc,*.beam,*.class,*~
-
 " Make our shell interactive
-set shellcmdflag=-ic
+" set shellcmdflag=-ic
 
 " Allow switching away from changed buffers
 set hidden
@@ -162,7 +158,7 @@ augroup END
 au BufNewFile,BufRead *.sls setl filetype=yaml
 
 " Auto format go code
-autocmd BufWritePre *.go Fmt
+" autocmd BufWritePre *.go Fmt
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -214,6 +210,9 @@ nnoremap <leader>ss :syntax sync fromstart<cr>:redraw!<cr>
 let g:syntastic_mode_map = {'mode': 'active', 'passive_filetypes': ['erlang', 'html'] }
 let g:syntastic_javascript_jsl_conf = "-conf ~/.jslintrc"
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_c_compiler = 'clang'
+let g:syntastic_c_config_file = '.clang_complete'
+let g:syntastic_python_checkers = ['python', 'pyflakes']
 
 " Set ctags
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
@@ -225,26 +224,25 @@ let Tlist_Exit_OnlyWindow = 1
 " Disable auto-fold in Erlang
 let g:erlangFoldSplitFunction = 0
 
-" Set powerline to use fancy symbols, and custom theme
-let g:Powerline_symbols = "fancy"
-let g:Powerline_theme = "custom"
-let g:Powerline_colorscheme = "custom"
-" call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+" Setup Airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_powerline_fonts=1
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
 
 " Setup ctrlp
 let g:ctrlp_max_files = 10000
 nmap <leader>b :CtrlPBuffer<cr>
-nmap <leader>l :CtrlPLine<cr>
-nmap <leader>d :bdelete<cr>
-
-" Setup YCM
-let g:ycm_key_detailed_diagnostics = '<leader>i'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_allow_changing_updatetime = 0
-let g:ycm_max_diagnostics_to_display = 30
 
 " Optimize file searching
-let g:ctrlp_custom_ignore = '\\.vagrant\|\\.git\|\\.hg\|\\.svn\|env\|.beam\|ebin\|deps\|\\.eunit\|\\.pyc$\|\\.o$'
+let g:ctrlp_custom_ignore = '\\.vagrant\|\\.git\|\\.hg\|\\.svn\|env\|.beam\|ebin\|deps\|\\.eunit\|node_modules\|\\.pyc$\|\\.o$'
 if has("unix")
     let g:ctrlp_user_command = {
                 \   'fallback': 'find %s -type f | egrep -v ' . g:ctrlp_custom_ignore .' | head -' . g:ctrlp_max_files
@@ -254,15 +252,13 @@ let g:ctrlp_working_path_mode = 0 " Do not modify my path, bitch
 let g:ctrlp_map = '<leader>t' " Just use leader-t
 let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp'  " Put the cache in the vim folder
 let g:ctrlp_jump_to_buffer = 1 " Do not jump to new tabs
-map <leader>b :CtrlPBuffer<cr>
 
 " Configure localvimrc
 let g:localvimrc_ask = 0
 let g:localvimrc_sandbox = 0
 
-" Disable fancy shit for 'large' files
-" that are > 50MB
-let g:LargeFile = 50
+" Configure clang complete
+let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
 
 " If we are in visual mode, we can use * to search for the selection
 vnoremap <silent> * :<C-U>
@@ -287,8 +283,8 @@ let g:gitgutter_all_on_focusgained = 0
 nnoremap <silent> <leader>j :GitGutterNextHunk<cr>
 nnoremap <silent> <leader>k :GitGutterPrevHunk<cr>
 
-" Adding abbrev
-iabbrev ldiz ( ͠° ͟ʖ ͡°)
+" Setup vim-go to automatically do imports
+let g:go_fmt_command = "goimports"
 
 " Set the Gvim options
 if has("gui_running")
@@ -303,4 +299,11 @@ if has("gui_running")
     set guioptions=egmt
 endif
 
+" Terminal mode
+if has("nvim")
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    colorscheme molokai
+    tnoremap <esc> <C-\><C-n>
+    nnoremap <Leader>c :terminal <CR>
+endif
 

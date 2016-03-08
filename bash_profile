@@ -16,7 +16,7 @@ alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
 alias gf='git fetch origin'
-alias gr='git rebase origin'
+alias gr='git rebase origin/master'
 alias gl='git prettylog'
 alias gd='git cdiff'
 alias gcp='git cherry-pick'
@@ -32,5 +32,11 @@ export GOPATH=$HOME/projects/go
 export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
+# gosrc package to quickly cd into folder
+function gosrc() {
+    cd $GOPATH/src
+    cd ./$1
+}
+export -f gosrc
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
